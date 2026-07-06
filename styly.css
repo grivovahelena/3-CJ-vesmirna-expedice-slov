@@ -121,6 +121,11 @@ body {
   line-height: 1.55;
   color: var(--text-tlumeny);
 }
+.autor {
+  font-size: 0.95rem;
+  color: var(--text-tlumeny);
+  opacity: 0.8;
+}
 
 /* ---------- mapa ---------- */
 .mapa-hlavicka {
@@ -438,6 +443,12 @@ body {
 .pas-urovne { font-size: 0.98rem; line-height: 1.9; }
 .pas-urovne h3 { margin: 10px 0 2px; font-size: 1.05rem; }
 .pas-urovne .radek { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; }
+.pas-autor {
+  text-align: center;
+  color: #8a8a9a;
+  font-size: 0.9rem;
+  margin-top: 18px;
+}
 
 .pas-tlacitka {
   display: flex; gap: 14px; margin-top: 22px;
