@@ -1,0 +1,462 @@
+/* ============================================================
+   VESMÍRNÁ EXPEDICE SLOV – styly
+   ============================================================ */
+
+:root {
+  --pozadi-1: #0d1033;
+  --pozadi-2: #2b1055;
+  --karta: rgba(255, 255, 255, 0.08);
+  --karta-plna: #1c1f4a;
+  --text: #f4f4ff;
+  --text-tlumeny: #b8b8d9;
+  --ypsilonka: #b5d334;
+  --podstatka: #ff9a3c;
+  --slovesna: #8b7cf8;
+  --zlata: #ffd54a;
+  --spravne: #3ecf6e;
+  --spatne: #ff5c5c;
+  --zaobleni: 18px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  font-family: "Segoe UI", "Trebuchet MS", Verdana, system-ui, sans-serif;
+  background: linear-gradient(160deg, var(--pozadi-1) 0%, var(--pozadi-2) 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* hvězdné pozadí */
+#hvezdy-pozadi {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+.hvezdicka {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: blikani 3s ease-in-out infinite;
+}
+@keyframes blikani {
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.9; }
+}
+
+/* obrazovky */
+.obrazovka {
+  display: none;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.obrazovka.aktivni { display: flex; flex-direction: column; }
+
+.skryto { display: none !important; }
+
+/* tlačítka – velká, dotyková */
+.btn {
+  border: none;
+  border-radius: var(--zaobleni);
+  font-family: inherit;
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 16px 28px;
+  min-height: 56px;
+  min-width: 44px;
+  cursor: pointer;
+  color: #1a1a2e;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn:active { transform: scale(0.96); }
+
+.btn-hlavni {
+  background: linear-gradient(135deg, var(--zlata), #ffb300);
+  box-shadow: 0 6px 0 #c98d00;
+}
+.btn-hlavni:active { box-shadow: 0 2px 0 #c98d00; }
+
+.btn-vedlejsi {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 5px 0 rgba(150, 150, 190, 0.7);
+}
+
+.btn-maly {
+  font-size: 1rem;
+  padding: 10px 16px;
+  min-height: 48px;
+  background: rgba(255, 255, 255, 0.15);
+  color: var(--text);
+}
+
+/* ---------- úvod ---------- */
+#uvod { justify-content: center; align-items: center; text-align: center; }
+.uvod-obsah { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.kosmonaut-velky { font-size: 5.5rem; animation: vznaseni 3.5s ease-in-out infinite; }
+@keyframes vznaseni {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.titul {
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  background: linear-gradient(90deg, var(--zlata), #ff9a3c, #8b7cf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.uvod-text {
+  font-size: 1.3rem;
+  max-width: 540px;
+  line-height: 1.55;
+  color: var(--text-tlumeny);
+}
+
+/* ---------- mapa ---------- */
+.mapa-hlavicka {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.mapa-hlavicka h2 { font-size: 1.8rem; }
+.celkove-hvezdy {
+  font-size: 1.4rem;
+  font-weight: 700;
+  background: var(--karta);
+  padding: 8px 18px;
+  border-radius: 999px;
+}
+
+.mapa-planety { display: flex; flex-direction: column; gap: 22px; flex: 1; }
+
+.planeta-karta {
+  background: var(--karta);
+  border-radius: var(--zaobleni);
+  padding: 18px;
+  border: 2px solid transparent;
+  position: relative;
+}
+.planeta-karta.planeta-ypsilonka { border-color: var(--ypsilonka); }
+.planeta-karta.planeta-podstatka { border-color: var(--podstatka); }
+.planeta-karta.planeta-slovesna { border-color: var(--slovesna); }
+
+.planeta-hlava { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.planeta-koule {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.2rem;
+  flex-shrink: 0;
+}
+.planeta-ypsilonka .planeta-koule { background: radial-gradient(circle at 30% 30%, #d9ef6e, #7fa315); }
+.planeta-podstatka .planeta-koule { background: radial-gradient(circle at 30% 30%, #ffc078, #d96f0a); }
+.planeta-slovesna .planeta-koule { background: radial-gradient(circle at 30% 30%, #b3a7ff, #5540d9); }
+
+.planeta-jmeno { font-size: 1.35rem; font-weight: 800; }
+.planeta-tema { color: var(--text-tlumeny); font-size: 1rem; }
+.planeta-hvezdy { margin-left: auto; font-size: 1.15rem; font-weight: 700; }
+
+/* palivoměr */
+.palivo {
+  margin: 14px 0 6px;
+  display: flex; align-items: center; gap: 10px;
+  font-size: 0.95rem; color: var(--text-tlumeny);
+}
+.palivo-trubice {
+  flex: 1; height: 16px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.palivo-vypln {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--zlata), #ff9a3c);
+  transition: width 0.6s ease;
+}
+
+.urovne-mrizka {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.uroven-btn {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255, 255, 255, 0.12);
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  min-height: 56px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.uroven-btn:active { transform: scale(0.97); }
+.uroven-ikona {
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.uroven-btn .mini-hvezdy { margin-left: auto; font-size: 0.85rem; letter-spacing: 1px; }
+.uroven-btn.hotova { background: rgba(62, 207, 110, 0.25); }
+
+.odznak {
+  margin-top: 12px;
+  display: inline-block;
+  background: linear-gradient(135deg, var(--zlata), #ffb300);
+  color: #4a3400;
+  font-weight: 800;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+/* zamčená planeta */
+.planeta-karta.zamcena { opacity: 0.55; }
+.zamek-info {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: var(--zlata);
+  font-weight: 700;
+}
+.planeta-karta.zamcena .uroven-btn { pointer-events: none; opacity: 0.5; }
+
+.mapa-paticka { margin-top: 24px; text-align: center; }
+
+/* ---------- úroveň ---------- */
+.uroven-hlavicka {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.uroven-info { display: flex; flex-direction: column; }
+#uroven-nazev { font-weight: 800; font-size: 1.2rem; }
+#uroven-postup { color: var(--text-tlumeny); font-size: 0.95rem; }
+.uroven-pokusy { margin-left: auto; font-size: 1.3rem; letter-spacing: 2px; }
+
+.postup-pruh {
+  height: 12px;
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+#postup-vypln {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, var(--spravne), var(--zlata));
+  border-radius: 999px;
+  transition: width 0.4s ease;
+}
+
+.otazka-plocha {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+.otazka-zadani { font-size: 1.35rem; font-weight: 700; max-width: 640px; }
+.otazka-veta {
+  font-size: 1.6rem;
+  background: var(--karta);
+  padding: 18px 26px;
+  border-radius: var(--zaobleni);
+  max-width: 680px;
+  line-height: 1.5;
+}
+.otazka-veta:empty { display: none; }
+.mezera-pismeno {
+  display: inline-block;
+  min-width: 1.4em;
+  border-bottom: 3px dashed var(--zlata);
+  color: var(--zlata);
+  font-weight: 800;
+}
+
+.otazka-moznosti {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 680px;
+}
+
+.moznost-btn {
+  border: 3px solid rgba(255, 255, 255, 0.25);
+  background: var(--karta-plna);
+  color: var(--text);
+  border-radius: var(--zaobleni);
+  font-family: inherit;
+  font-size: 1.3rem;
+  font-weight: 700;
+  padding: 16px 26px;
+  min-height: 60px;
+  min-width: 80px;
+  cursor: pointer;
+  transition: transform 0.12s ease, border-color 0.12s ease, background 0.12s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.moznost-btn:active { transform: scale(0.96); }
+.moznost-btn.spravna-volba {
+  background: rgba(62, 207, 110, 0.3);
+  border-color: var(--spravne);
+}
+.moznost-btn.spatna-volba {
+  background: rgba(255, 92, 92, 0.25);
+  border-color: var(--spatne);
+  animation: zatreseni 0.4s ease;
+  opacity: 0.6;
+  pointer-events: none;
+}
+@keyframes zatreseni {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-8px); }
+  75% { transform: translateX(8px); }
+}
+
+/* doplňovačka – velká písmenková tlačítka */
+.otazka-moznosti.rezim-dopln .moznost-btn {
+  font-size: 2.2rem;
+  min-width: 110px;
+  min-height: 80px;
+}
+
+/* chytačka – bubliny */
+.otazka-moznosti.rezim-chyt { gap: 20px; padding: 10px 0; }
+.otazka-moznosti.rezim-chyt .moznost-btn {
+  border-radius: 999px;
+  animation: bublina 3s ease-in-out infinite;
+}
+.otazka-moznosti.rezim-chyt .moznost-btn:nth-child(2n) { animation-delay: 0.7s; }
+.otazka-moznosti.rezim-chyt .moznost-btn:nth-child(3n) { animation-delay: 1.4s; }
+@keyframes bublina {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* abc – možnosti pod sebou */
+.otazka-moznosti.rezim-abc { flex-direction: column; align-items: stretch; }
+.otazka-moznosti.rezim-abc .moznost-btn { width: 100%; text-align: left; }
+
+/* zpětná vazba */
+.zpetna-vazba {
+  position: sticky;
+  bottom: 0;
+  margin: 16px -20px -20px;
+  padding: 20px;
+  border-radius: var(--zaobleni) var(--zaobleni) 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+  text-align: center;
+  z-index: 5;
+}
+.zpetna-vazba.ok { background: rgba(23, 111, 58, 0.97); }
+.zpetna-vazba.chyba { background: rgba(150, 40, 40, 0.97); }
+.zpetna-vazba.napoveda-blok { background: rgba(120, 90, 10, 0.97); }
+#zv-text { font-size: 1.2rem; line-height: 1.5; max-width: 640px; }
+
+/* ---------- výsledek úrovně ---------- */
+#vysledek { justify-content: center; align-items: center; text-align: center; }
+.vysledek-obsah { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+#vysledek-titul { font-size: 2rem; }
+.vysledek-hvezdy { font-size: 3.4rem; letter-spacing: 8px; }
+.vysledek-hvezdy .ziskana { animation: hvezda-skok 0.5s ease backwards; }
+.vysledek-hvezdy .ziskana:nth-child(2) { animation-delay: 0.25s; }
+.vysledek-hvezdy .ziskana:nth-child(3) { animation-delay: 0.5s; }
+@keyframes hvezda-skok {
+  from { transform: scale(0) rotate(-90deg); opacity: 0; }
+  to { transform: scale(1) rotate(0); opacity: 1; }
+}
+.vysledek-hvezdy .prazdna { opacity: 0.25; }
+#vysledek-text { font-size: 1.2rem; color: var(--text-tlumeny); max-width: 520px; line-height: 1.5; }
+.vysledek-tlacitka { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+/* ---------- vesmírný pas ---------- */
+#pas { align-items: center; }
+.pas-karta {
+  background: #fdfaef;
+  color: #2b2b45;
+  border-radius: var(--zaobleni);
+  padding: 30px;
+  width: 100%;
+  max-width: 640px;
+  border: 4px dashed #c9b458;
+}
+.pas-titul { text-align: center; font-size: 1.9rem; margin-bottom: 4px; }
+.pas-jmeno { text-align: center; color: #8a8a9a; margin-bottom: 22px; }
+.pas-razitka {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.razitko {
+  width: 150px;
+  border: 3px solid #ddd;
+  border-radius: 14px;
+  padding: 14px 10px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+.razitko .razitko-emoji { font-size: 2.4rem; display: block; margin-bottom: 6px; }
+.razitko.ziskane { border-color: var(--spravne); background: rgba(62, 207, 110, 0.12); }
+.razitko.neziskane { opacity: 0.4; filter: grayscale(1); }
+.razitko .razitko-stav { font-weight: 800; display: block; margin-top: 6px; }
+.razitko.ziskane .razitko-stav { color: #1d8a46; }
+
+.pas-souhrn {
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.pas-urovne { font-size: 0.98rem; line-height: 1.9; }
+.pas-urovne h3 { margin: 10px 0 2px; font-size: 1.05rem; }
+.pas-urovne .radek { display: flex; justify-content: space-between; border-bottom: 1px dotted #ccc; }
+
+.pas-tlacitka {
+  display: flex; gap: 14px; margin-top: 22px;
+  flex-wrap: wrap; justify-content: center;
+}
+
+/* ---------- tisk pasu ---------- */
+@media print {
+  body { background: #fff; }
+  #hvezdy-pozadi, .pas-tlacitka { display: none !important; }
+  .obrazovka { display: none !important; }
+  #pas { display: block !important; padding: 0; }
+  .pas-karta { border-color: #888; max-width: 100%; }
+}
+
+/* ---------- menší obrazovky ---------- */
+@media (max-width: 520px) {
+  .otazka-veta { font-size: 1.3rem; }
+  .otazka-zadani { font-size: 1.15rem; }
+  .moznost-btn { font-size: 1.15rem; padding: 14px 18px; }
+  .planeta-hvezdy { margin-left: 0; width: 100%; }
+}

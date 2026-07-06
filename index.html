@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vesmírná expedice slov</title>
+  <link rel="stylesheet" href="styly.css">
+</head>
+<body>
+  <div id="hvezdy-pozadi" aria-hidden="true"></div>
+
+  <!-- ÚVODNÍ OBRAZOVKA -->
+  <section id="uvod" class="obrazovka aktivni">
+    <div class="uvod-obsah">
+      <div class="kosmonaut-velky">👩‍🚀</div>
+      <h1 class="titul">Vesmírná expedice slov</h1>
+      <p class="uvod-text">Ahoj, kosmonaute! Čeká nás výprava na tři planety plné slov.
+        Splň mise, posbírej hvězdy a získej vesmírný pas!</p>
+      <button id="btn-start" class="btn btn-hlavni">🚀 Start mise</button>
+    </div>
+  </section>
+
+  <!-- MAPA MISE -->
+  <section id="mapa" class="obrazovka">
+    <header class="mapa-hlavicka">
+      <h2>Mapa mise</h2>
+      <div class="celkove-hvezdy" id="mapa-hvezdy">⭐ 0</div>
+    </header>
+    <div id="mapa-planety" class="mapa-planety"></div>
+    <div class="mapa-paticka">
+      <button id="btn-pas" class="btn btn-vedlejsi">🛂 Vesmírný pas</button>
+    </div>
+  </section>
+
+  <!-- ÚROVEŇ (OTÁZKY) -->
+  <section id="uroven" class="obrazovka">
+    <header class="uroven-hlavicka">
+      <button id="btn-zpet" class="btn btn-maly">← Mapa</button>
+      <div class="uroven-info">
+        <span id="uroven-nazev"></span>
+        <span id="uroven-postup"></span>
+      </div>
+      <div class="uroven-pokusy" id="uroven-pokusy"></div>
+    </header>
+    <div class="postup-pruh"><div id="postup-vypln"></div></div>
+    <main class="otazka-plocha">
+      <p id="otazka-zadani" class="otazka-zadani"></p>
+      <p id="otazka-veta" class="otazka-veta"></p>
+      <div id="otazka-moznosti" class="otazka-moznosti"></div>
+    </main>
+    <div id="zpetna-vazba" class="zpetna-vazba skryto">
+      <p id="zv-text"></p>
+      <button id="btn-dalsi" class="btn btn-hlavni">Pokračovat →</button>
+    </div>
+  </section>
+
+  <!-- VÝSLEDEK ÚROVNĚ -->
+  <section id="vysledek" class="obrazovka">
+    <div class="vysledek-obsah">
+      <div class="kosmonaut-velky" id="vysledek-emoji">🎉</div>
+      <h2 id="vysledek-titul">Mise splněna!</h2>
+      <div id="vysledek-hvezdy" class="vysledek-hvezdy"></div>
+      <p id="vysledek-text"></p>
+      <div class="vysledek-tlacitka">
+        <button id="btn-znovu-uroven" class="btn btn-vedlejsi">🔄 Zkusit znovu</button>
+        <button id="btn-na-mapu" class="btn btn-hlavni">🗺️ Na mapu</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- VESMÍRNÝ PAS -->
+  <section id="pas" class="obrazovka">
+    <div class="pas-karta" id="pas-karta">
+      <h2 class="pas-titul">🛂 Vesmírný pas</h2>
+      <p class="pas-jmeno">Mladý kosmonaut / mladá kosmonautka</p>
+      <div id="pas-razitka" class="pas-razitka"></div>
+      <div class="pas-souhrn" id="pas-souhrn"></div>
+      <div id="pas-urovne" class="pas-urovne"></div>
+    </div>
+    <div class="pas-tlacitka">
+      <button id="btn-tisk" class="btn btn-vedlejsi">🖨️ Vytisknout</button>
+      <button id="btn-pas-mapa" class="btn btn-vedlejsi">🗺️ Na mapu</button>
+      <button id="btn-reset" class="btn btn-hlavni">🔁 Hrát znovu</button>
+    </div>
+  </section>
+
+  <script src="otazky.js"></script>
+  <script src="hra.js"></script>
+</body>
+</html>
