@@ -120,7 +120,7 @@ function vykresliMapu() {
       btn.className = "uroven-btn" + (p.hotova ? " hotova" : "");
       btn.innerHTML =
         "<span class='uroven-ikona'>" + u.ikona + "</span>" +
-        "<span>" + u.nazev + "</span>" +
+        "<span class='uroven-nazev-text'>" + u.nazev + "</span>" +
         "<span class='mini-hvezdy'>" + "★".repeat(p.hvezdy) + "☆".repeat(3 - p.hvezdy) + "</span>";
       btn.addEventListener("click", () => spustUroven(u.id));
       mrizka.appendChild(btn);
